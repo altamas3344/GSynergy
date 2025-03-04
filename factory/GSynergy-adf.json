@@ -1,0 +1,9 @@
+{
+	"name": "GSynergy-adf",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "043dc5a6-2cdc-4423-b005-f38da4ca620d",
+		"tenantId": "a3299463-16ed-4744-90de-e8fe6e835abd"
+	}
+}
