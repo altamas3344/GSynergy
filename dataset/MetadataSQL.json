@@ -46,5 +46,6 @@
 			"schema": "Cntrl",
 			"table": "Metadata"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }
