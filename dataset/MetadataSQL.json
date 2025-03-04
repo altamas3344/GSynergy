@@ -1,0 +1,50 @@
+{
+	"name": "MetadataSQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQL_DB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FileName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADLS_Location",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LandingTable",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MartProcedure",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MartSchema",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MartTable",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TableType",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "Cntrl",
+			"table": "Metadata"
+		}
+	}
+}
