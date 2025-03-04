@@ -28,7 +28,8 @@
 				},
 				"fileSystem": "datalake001"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "|",
+			"compressionCodec": "gzip",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
