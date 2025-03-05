@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "CSV_Extract",
 	"properties": {
 		"activities": [
 			{
@@ -17,6 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT *, RIGHT(MartTable, LEN(MartTable) - CHARINDEX('.', MartTable)) AS MartTableName\nfrom [Cntrl].[Metadata];",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -44,7 +45,8 @@
 						"value": "@activity('Lookup_Metadata').output.value",
 						"type": "Expression"
 					},
-					"isSequential": true,
+					"isSequential": false,
+					"batchCount": 2,
 					"activities": [
 						{
 							"name": "ADLS_To_Landing",
@@ -62,7 +64,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "@concat('Select top 100 * from ',item().MartSchema,'.',item().MartTable)",
+										"value": "@concat('SELECT TOP 100 * FROM ', item().MartSchema, '.', item().MartTableName)\n",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
@@ -111,7 +113,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"FileName": {
-											"value": "@concat(item().LandingTable,'csv')",
+											"value": "@concat(item().LandingTable,'.csv')",
 											"type": "Expression"
 										}
 									}
