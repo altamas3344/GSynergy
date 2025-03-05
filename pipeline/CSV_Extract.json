@@ -46,7 +46,7 @@
 						"type": "Expression"
 					},
 					"isSequential": false,
-					"batchCount": 2,
+					"batchCount": 5,
 					"activities": [
 						{
 							"name": "ADLS_To_Landing",
@@ -71,14 +71,12 @@
 									"partitionOption": "None"
 								},
 								"sink": {
-									"type": "DelimitedTextSink",
+									"type": "ParquetSink",
 									"storeSettings": {
 										"type": "AzureBlobFSWriteSettings"
 									},
 									"formatSettings": {
-										"type": "DelimitedTextWriteSettings",
-										"quoteAllText": true,
-										"fileExtension": ".txt"
+										"type": "ParquetWriteSettings"
 									}
 								},
 								"enableStaging": false,
@@ -109,11 +107,11 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "CSVdataset",
+									"referenceName": "ParquetADLS",
 									"type": "DatasetReference",
 									"parameters": {
 										"FileName": {
-											"value": "@concat(item().LandingTable,'.csv')",
+											"value": "@concat(item().LandingTable,'.parquet')",
 											"type": "Expression"
 										}
 									}

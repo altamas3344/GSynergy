@@ -1,0 +1,29 @@
+{
+	"name": "ParquetADLS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"FileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().FileName",
+					"type": "Expression"
+				},
+				"folderPath": "GSynergyDataset/Parquet",
+				"fileSystem": "datalake001"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
